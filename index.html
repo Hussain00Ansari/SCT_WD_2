@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+    <div class="container">
+        <div class="mode-toggle">
+            <div class="toggle-btn" onclick="toggleMode()"></div>
+        </div>
+        <h1>Analog Stopwatch</h1>
+
+        <div class="clock-container">
+            <div class="clock-face">
+                <div class="number number-60">60</div>
+                <div class="number number-15">15</div>
+                <div class="number number-30">30</div>
+                <div class="number number-45">45</div>
+            </div>
+            <div class="hand second-hand"></div>
+            <div class="clock-center"></div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">Start</button>
+            <button id="stopBtn" disabled>Stop</button>
+            <button id="resetBtn" disabled>Reset</button>
+            <button id="lapBtn" disabled>Lap</button>
+        </div>
+
+        <div class="laps" id="lapsContainer"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

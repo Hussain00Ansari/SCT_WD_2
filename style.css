@@ -1,0 +1,282 @@
+:root {
+    --bg-gradient-start: #3a0077;
+    --bg-gradient-end: #8e2de2;
+    --clock-face: #0f0f1a;
+    --clock-border: #4a148c;
+    --clock-text: #f0f0f0;
+    --tick-color: #673ab7;
+    --hand-color: #e539ff;
+    --center-color: #ff4081;
+    --button-bg: #4a148c;
+    --button-hover: #7b1fa2;
+    --button-text: #ffffff;
+    --lap-bg: #311b92;
+    --lap-text: #e1bee7;
+    --mode-toggle-bg: #4a148c;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--clock-text);
+    transition: background 0.5s ease;
+}
+
+.container {
+    text-align: center;
+    max-width: 100%;
+    padding: 2rem;
+}
+
+.clock-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto 2rem;
+}
+
+@media (max-width: 400px) {
+    .clock-container {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+.clock-face {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--clock-face);
+    border: 8px solid var(--clock-border);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5),
+        0 0 0 4px rgba(139, 0, 255, 0.2),
+        inset 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.number {
+    position: absolute;
+    color: var(--clock-text);
+    font-size: 1rem;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+}
+
+.number-60 {
+    top: 2%;
+    left: 48%;
+    transform: translate(-50%, 0%);
+}
+
+.number-15 {
+    top: 50%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.number-30 {
+    top: 95%;
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
+
+.number-45 {
+    top: 50%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+.clock-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background-color: var(--center-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    box-shadow: 0 0 5px rgba(255, 64, 129, 0.8);
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: 50% 100%;
+    border-radius: 10px;
+    z-index: 5;
+}
+
+.hour-hand {
+    width: 6px;
+    height: 80px;
+    background-color: var(--hand-color);
+    transform: translateX(-50%);
+}
+
+.minute-hand {
+    width: 4px;
+    height: 120px;
+    background-color: var(--hand-color);
+    transform: translateX(-50%);
+}
+
+.second-hand {
+    width: 2px;
+    height: 45%;
+    background-color: var(--center-color);
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-49%) rotate(0deg);
+    z-index: 5;
+}
+
+
+
+.tick {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 15px;
+    background-color: var(--tick-color);
+    transform-origin: 50% 150px;
+    border-radius: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    min-width: 100px;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.laps {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.lap-item {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    background-color: var(--lap-bg);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--lap-text);
+}
+
+.mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.toggle-btn {
+    width: 60px;
+    height: 30px;
+    background-color: var(--mode-toggle-bg);
+    border-radius: 30px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn::before {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+.dark .toggle-btn::before {
+    transform: translateX(30px);
+}
+
+/* Light mode styles */
+.light {
+    --bg-gradient-start: #d6a2ff;
+    --bg-gradient-end: #a18cd1;
+    --clock-face: #f8f9fa;
+    --clock-border: #ba68c8;
+    --clock-text: #212121;
+    --tick-color: #9c27b0;
+    --hand-color: #7b1fa2;
+    --center-color: #e91e63;
+    --button-bg: #9c27b0;
+    --button-hover: #ba68c8;
+    --button-text: #ffffff;
+    --lap-bg: #e1bee7;
+    --lap-text: #4a148c;
+    --mode-toggle-bg: #ba68c8;
+}
+
+/* Hide lap container when empty */
+.laps:empty {
+    display: none;
+}
+
+/* Scrollbar styling */
+.laps::-webkit-scrollbar {
+    width: 8px;
+}
+
+.laps::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.laps::-webkit-scrollbar-thumb {
+    background: var(--button-bg);
+    border-radius: 10px;
+}
